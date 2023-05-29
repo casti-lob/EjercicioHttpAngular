@@ -3,9 +3,10 @@ MostrarUsuarios:
 
 <ul>
     <li *ngFor="let user of users">
-      {{ user.nombre }} - {{ user.email }}
+     <a [routerLink]="['/detail/',user.uid]">{{ user.nombre }} - {{ user.email }}</a> 
       <button (click)="deleteUser(user.uid)">Eliminar</button>
       <button (click)="updateUser(user.uid)">Modificar</button>
+      
     </li>
   </ul>
   

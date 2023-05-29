@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ResponseUser } from './users/interface/usuarios';
+import { ResponseUser, ResponseUsers } from './users/interface/usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,18 @@ export class ApiService {
     return headers;
   }
   // Ejemplo de petición GET para obtener todos los usuarios
-  getUsers(): Observable<ResponseUser> {
+  getUsers(): Observable<ResponseUsers> {
     const url = this.baseUrl + 'usuarios';
     const headers = this.getHeaders();
-    return this.http.get<ResponseUser>(url, { headers });
+    return this.http.get<ResponseUsers>(url, { headers });
+  }
+
+  getUserById(userId:string): Observable<ResponseUser>{
+    const url = this.baseUrl + `usuarios/${userId}`;
+    const headers = this.getHeaders();
+    console.log(userId)
+    return this.http.get<ResponseUser>(url,{headers})
+
   }
 
   // Ejemplo de petición POST para crear un usuario

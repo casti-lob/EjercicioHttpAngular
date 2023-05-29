@@ -1,6 +1,12 @@
-export interface ResponseUser {
+export interface ResponseUsers {
     ok:       boolean;
     usuarios: Usuario[];
+    total:    number;
+}
+
+export interface ResponseUser {
+    ok:       boolean;
+    usuario: Usuario[];
     total:    number;
 }
 
